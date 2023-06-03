@@ -16,10 +16,7 @@ squareup_converter_moshi = "2.9.0"
 squareup_moshi_kotlin = "1.14.0"
 squareup_moshi_kotlin_codegen = "1.14.0"
 
-google_dagger = "2.45"
-google_dagger_compiler = "2.45"
-google_hilt_android = "2.45"
-google_hilt_compiler = "2.45"
+google_dagger = "2.46.1"
 
 androidx_hilt_navigation_compose = "1.0.0"
 
@@ -32,9 +29,11 @@ androidx_test_ext_junit = "1.1.5"
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "google_dagger" }
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
 
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx_core_ktx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx_lifecycle_runtime_ktx" }
@@ -50,9 +49,9 @@ squareup-moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", v
 squareup-moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "squareup_moshi_kotlin_codegen" }
 
 google-dagger = { group = "com.google.dagger", name = "dagger", version.ref = "google_dagger" }
-google-dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "google_dagger_compiler" }
-google-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "google_hilt_android" }
-google-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "google_hilt_compiler" }
+google-dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "google_dagger" }
+google-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "google_dagger" }
+google-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "google_dagger" }
 
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx_hilt_navigation_compose" }
 
