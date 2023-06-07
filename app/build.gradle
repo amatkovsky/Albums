@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose true
+        buildConfig true
     }
     composeOptions {
         kotlinCompilerExtensionVersion "1.4.7"
@@ -47,6 +48,16 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+}
+
+import com.android.build.api.variant.BuildConfigField
+androidComponents {
+    onVariants(selector().withBuildType("debug"), {
+        def props = new Properties()
+        file("secrets.properties").withInputStream { props.load(it) }
+        def clientId = props.getProperty("UNSPLASH_CLIENT_ID")
+        it.buildConfigFields.put("UNSPLASH_CLIENT_ID", new BuildConfigField("String", "\"$clientId\"", null))
+    })
 }
 
 dependencies {
@@ -74,6 +85,11 @@ dependencies {
     implementation(libs.google.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.google.hilt.compiler)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.converter.moshi)
+    implementation(libs.squareup.moshi.kotlin)
+    ksp(libs.squareup.moshi.kotlin.codegen)
 
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
