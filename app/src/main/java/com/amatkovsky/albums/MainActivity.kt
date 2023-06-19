@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.amatkovsky.albums.feed.ui.Feed
 import com.amatkovsky.albums.ui.theme.AlbumsTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                         composable("greeting") {
                             Column {
 
-                                Greeting("Android")
+                                Feed()
                                 Button(onClick = { navController.navigate("screen2") }) {
                                     Text("Nav")
                                 }

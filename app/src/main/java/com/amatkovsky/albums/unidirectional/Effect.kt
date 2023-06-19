@@ -2,6 +2,8 @@ package com.amatkovsky.albums.unidirectional
 
 import kotlinx.coroutines.flow.Flow
 
-interface Effect {
-    fun observe(actions: Flow<Action>): Flow<Action>
+interface Effect<S> {
+
+    fun observe(actions: Flow<Action>, state: () -> S): Flow<Action>
+
 }

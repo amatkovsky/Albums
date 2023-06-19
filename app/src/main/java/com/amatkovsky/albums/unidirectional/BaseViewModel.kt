@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-abstract class BaseViewModel<S>(initialState: S, effects: List<Effect>) : ViewModel() {
+abstract class BaseViewModel<S>(initialState: S, effects: List<Effect<S>>) : ViewModel() {
 
     private val store = MutableStateFlow(initialState)
 
@@ -16,7 +16,7 @@ abstract class BaseViewModel<S>(initialState: S, effects: List<Effect>) : ViewMo
 
     init {
         effects.forEach { effect ->
-            effect.observe(actions)
+            effect.observe(actions) { store.value }
                 .onEach { action -> actions.emit(action) }
                 .launchIn(viewModelScope)
         }
@@ -29,4 +29,7 @@ abstract class BaseViewModel<S>(initialState: S, effects: List<Effect>) : ViewMo
     fun dispatch(action: Action) {
         actions.tryEmit(action)
     }
+
+    abstract fun reduce(state: S, action: Action): S
+
 }
